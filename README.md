@@ -7,42 +7,43 @@ terminal rendering engine (tre) is a python-based 3d rendering engine designed t
 
 features
 --------
-- accepts input in the .obj file format (vertices, normals, texture coordinates)
+- accepts .obj file format 
 - parses and loads model data into memory using a custom parser
 - renders 3d models as ascii art within a terminal using curses
 - implements projection algorithms to convert 3d coordinates to 2d ascii positions
+- implements interactable 2d ui ascii elements with a 2d renderer 
 - supports user-controlled rotation about the x, y, and z axes
-- provides zoom in/out functionality via keyboard input
+- provides zoom in/out functionality via 2d rendered ui
 - allows users to modify vertex positions and apply basic texturing
-- exports updated models in .obj format
+- exports updated models in .obj format with custom python exporter
 
 technical specifications
 ------------------------
 input models:
-  - .obj format support (geometry, normals, and texture coordinates)
+  - .obj format support 
   - custom python parser converts file data into internal data structures
 
 rendering:
   - uses the curses library to draw ascii art representations of models
-  - implements a projection algorithm (e.g. perspective projection) to map 3d vertices to 2d terminal coordinates
+  - implements a perspective projection to map 3d vertices to 2d terminal coordinates
   - calculates shading and depth cues based on vertex positions
 
 user interaction:
-  - keyboard controls allow rotation, zooming, and navigation around the model
-  - command-line prompts enable vertex editing and texture modifications
-  - realtime update of the ascii display during interactive manipulation
+  - keyboard controls / clickable terminal ui elements allow rotation, zooming, and navigation around the model
+  - allows dragging and dropping of vertices in screen space, updating the model
+  - realtime update of the ascii textures with clickable terminal ui elements 
 
 model modification and export:
-  - vertex positions and texture mapping can be edited
+  - vertex positions and ascii texture can be edited
   - modifications are maintained in an internal structure
-  - users can save changes or save as a new .obj file with updated vertex, normal, and texture data
+  - users can save changes or save as a new .obj file with updated vertex data
 
 dependencies
 ------------
 - python (version 3.x)
 - curses (built-in on unix-like systems)
-- standard python modules for math, file i/o, and data processing
-- cupy for gpu matrix multiplication (faster) // Work in progress
+- standard python modules for math, file i/o, and data processing (numpy, etc)
+- cupy for gpu matrix multiplication (faster) // work in progress
 
 
 usage
