@@ -1,4 +1,4 @@
-terminal rendering engine (tre)
+terminal rendering engine (tre) w/ Finch Ward
 ================================
 
 overview
