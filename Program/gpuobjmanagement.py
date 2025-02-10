@@ -7,14 +7,14 @@ totaloffset = cp.array([0, 0, 0], dtype=cp.float32)
 
 class triangle:
     def __init__(self, pointIndexes: list, char: int, txtC: int, highC: int):
-        self.pointIndexes = pointIndexes  # Use list of indices
+        self.pointIndexes = pointIndexes 
         self.char = char
         self.txtColour = txtC
         self.highlightColour = highC
 
 class mesh:
     def __init__(self):
-        self.Points = cp.array([])  # Initialize Points as an empty CuPy array
+        self.Points = cp.array([])  
         self.Triangles = []
         # Arrays to store attributes for rendering
         self.triangle_indices = cp.array([], dtype=cp.int32)
