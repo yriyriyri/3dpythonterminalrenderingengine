@@ -8,15 +8,12 @@ epsilon = cp.finfo(float).eps
 
 def doRender(myMesh):
     global render
-    # Initialize arrays with CuPy
     respectiveTriangles = cp.zeros((config.resolution['y'], config.resolution['x']), dtype=cp.int32)
     respectiveColours = cp.zeros((config.resolution['y'], config.resolution['x'], 2), dtype=cp.int32)
     respectiveVertices = cp.full_like(render, 9)
 
-    # Convert rayDirections to CuPy array
     rayDirections_cp = cp.asarray(rayDirections)
 
-    # Loop over the render array using GPU
     for i in range(render.shape[0]):
         for j in range(render.shape[1]):
             d = rayDirections_cp[i, j, :]
@@ -50,10 +47,8 @@ def doRender(myMesh):
             else:
                 render[i, j] = closestTriangle.char
                 respectiveTriangles[i, j] = closestTriangle
-                # Extract individual color components
                 txt_color = closestTriangle.txtColour
                 high_color = closestTriangle.highlightColour
-                # Assign colors to respectiveColours
                 respectiveColours[i, j, 0] = txt_color
                 respectiveColours[i, j, 1] = high_color
 
